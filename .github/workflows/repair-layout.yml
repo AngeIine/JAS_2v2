@@ -71,7 +71,20 @@ jobs:
                           raise RuntimeError('Ambiguous duplicate basename: ' + flat.name)
                       duplicates[flat] = destination
           
-              figures = ['action_to_score.png', 'dataset_overview.png', 'framework.png', 'feature_analysis.png']
+              figures = ['action_to_score.png', 'dataset_overview.png', 'framework.png']
+              readme_path = root / 'README.md'
+              readme_text = readme_path.read_text(encoding='utf-8')
+              updated_readme = re.sub(
+                  r'(?ms)^### Feature analysis[^\n]*\n.*?(?=^## |\Z)',
+                  '', readme_text
+              )
+              if 'feature_analysis.png' in updated_readme:
+                  raise RuntimeError('The feature-analysis image reference has an unexpected format; inspect README first.')
+              removed_images = [root / 'feature_analysis.png', root / 'assets/figures/feature_analysis.png']
+              for path in removed_images:
+                  check_path(path)
+                  if path.exists() and not path.is_file():
+                      raise RuntimeError('Expected an image file: ' + str(path))
               figure_moves = []
               for name in figures:
                   source = root / name
@@ -106,6 +119,10 @@ jobs:
                   duplicate.unlink()
               for source, destination in figure_moves:
                   source.unlink()
+              for path in removed_images:
+                  if path.is_file():
+                      path.unlink()
+              readme_path.write_text(updated_readme, encoding='utf-8')
               code_readme = root / 'code/README.md'
               if code_readme.exists():
                   original_readme = inner / 'code/README.md'
@@ -136,7 +153,7 @@ jobs:
               print('Verified original files:', len(preserved))
               print('Removed identical root duplicates:', len(duplicates))
               print('Verified paper images:', len(figures))
-              print('Layout repair completed; the root README was preserved.')
+              print('Layout repair completed; the feature-analysis image section was removed from README.')
               return preserved
           
           
