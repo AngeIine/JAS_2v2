@@ -1,0 +1,9 @@
+﻿JAS-2v2 Release Notice
+
+This release contains annotation CSV files, split files, and metadata for research purposes.
+
+1. Users are responsible for complying with all applicable copyright, licensing, and platform terms when obtaining or using any original source footage.
+2. The annotation package is intended for non-commercial research and evaluation use unless superseded by a future official public license.
+3. Redistribution of this package should preserve this notice and accompanying documentation.
+
+If the dataset is formally published on a hosting platform with an explicit license, that platform-specific license should be treated as authoritative.

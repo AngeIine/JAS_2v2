@@ -1,0 +1,519 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataBiases": "cr:dataBiases",
+    "dataCollection": "cr:dataCollection",
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "md5": "cr:md5",
+    "personalSensitiveInformation": "cr:personalSensitiveInformation",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "JAS2v2",
+  "alternateName": "JAS-2v2",
+  "description": "JAS-2v2 is a benchmark for fine-grained tactical analysis in beach volleyball, badminton doubles, tennis doubles, and table tennis doubles. The public release contains action-level CSV annotations, split definitions, and dataset documentation for joint action prediction and score outcome prediction.",
+  "citeAs": "Anonymous Authors. JAS-2v2: A benchmark for joint action prediction and score outcome prediction across representative 2v2 sports. NeurIPS 2026 submission.",
+  "url": "https://www.kaggle.com/datasets/raina0617/jas2v2/versions/1",
+  "version": "1",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "datePublished": "2026-05-04",
+  "license": {
+    "@type": "sc:CreativeWork",
+    "name": "Database: Open Database, Contents: \u00a9 Original Authors",
+    "url": "http://opendatacommons.org/licenses/odbl/1.0/"
+  },
+  "creator": {
+    "@type": "sc:Person",
+    "name": "Raina_0617",
+    "url": "https://www.kaggle.com/raina0617"
+  },
+  "publisher": {
+    "@type": "sc:Organization",
+    "name": "Kaggle",
+    "url": "https://www.kaggle.com"
+  },
+  "includedInDataCatalog": {
+    "@type": "sc:DataCatalog",
+    "name": "Kaggle",
+    "url": "https://www.kaggle.com"
+  },
+  "isAccessibleForFree": true,
+  "keywords": [
+    "sports benchmark",
+    "action prediction",
+    "score prediction",
+    "sequence modeling",
+    "video annotation",
+    "2v2 sports"
+  ],
+  "thumbnailUrl": "https://storage.googleapis.com/kaggle-datasets-images/10314206/16084659/2302614ef8174a52b6f10caa9b0efcc8/dataset-card.png?t=2026-05-04-10-02-13",
+  "dateModified": "2026-05-04T09:53:22.87",
+  "distribution": [
+    {
+      "@id": "archive.zip",
+      "@type": "cr:FileObject",
+      "name": "archive.zip",
+      "description": "Archive containing the JAS-2v2 release package.",
+      "contentUrl": "https://www.kaggle.com/api/v1/datasets/download/raina0617/jas2v2?datasetVersionNumber=1",
+      "encodingFormat": "application/zip",
+      "md5": "T/ZcVAi7rdKldIByBwgBUw=="
+    },
+    {
+      "@id": "badminton_csvs",
+      "@type": "cr:FileSet",
+      "name": "Badminton annotation CSV files",
+      "description": "Action-level annotations for badminton doubles.",
+      "containedIn": {
+        "@id": "archive.zip"
+      },
+      "includes": "JAS_2v2/data/badminton/*.csv",
+      "encodingFormat": "text/csv"
+    },
+    {
+      "@id": "beachvolleyball_csvs",
+      "@type": "cr:FileSet",
+      "name": "Beach volleyball annotation CSV files",
+      "description": "Action-level annotations for beach volleyball.",
+      "containedIn": {
+        "@id": "archive.zip"
+      },
+      "includes": "JAS_2v2/data/beachvolleyball/*.csv",
+      "encodingFormat": "text/csv"
+    },
+    {
+      "@id": "tennis_csvs",
+      "@type": "cr:FileSet",
+      "name": "Tennis annotation CSV files",
+      "description": "Action-level annotations for tennis doubles.",
+      "containedIn": {
+        "@id": "archive.zip"
+      },
+      "includes": "JAS_2v2/data/tennis/*.csv",
+      "encodingFormat": "text/csv"
+    },
+    {
+      "@id": "table_tennis_csvs",
+      "@type": "cr:FileSet",
+      "name": "Table tennis annotation CSV files",
+      "description": "Action-level annotations for table tennis doubles.",
+      "containedIn": {
+        "@id": "archive.zip"
+      },
+      "includes": "JAS_2v2/data/table_tennis/*.csv",
+      "encodingFormat": "text/csv"
+    },
+    {
+      "@id": "train_split",
+      "@type": "cr:FileObject",
+      "name": "train_files.txt",
+      "description": "File-level training split definition.",
+      "containedIn": {
+        "@id": "archive.zip"
+      },
+      "contentUrl": "JAS_2v2/splits/train_files.txt",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@id": "test_split",
+      "@type": "cr:FileObject",
+      "name": "test_files.txt",
+      "description": "File-level test split definition.",
+      "containedIn": {
+        "@id": "archive.zip"
+      },
+      "contentUrl": "JAS_2v2/splits/test_files.txt",
+      "encodingFormat": "text/plain"
+    },
+    {
+      "@id": "readme_file",
+      "@type": "cr:FileObject",
+      "name": "README.md",
+      "description": "Dataset documentation.",
+      "containedIn": {
+        "@id": "archive.zip"
+      },
+      "contentUrl": "JAS_2v2/README.md",
+      "encodingFormat": "text/markdown"
+    }
+  ],
+  "recordSet": [
+    {
+      "@id": "badminton_annotations",
+      "@type": "cr:RecordSet",
+      "name": "Badminton annotations",
+      "description": "Action-level badminton doubles annotations using timestamp-style temporal fields.",
+      "field": [
+        {
+          "@id": "badminton/name",
+          "@type": "cr:Field",
+          "name": "name",
+          "description": "Annotated badminton action category.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "badminton_csvs"
+            },
+            "extract": {
+              "column": "name"
+            }
+          }
+        },
+        {
+          "@id": "badminton/start",
+          "@type": "cr:Field",
+          "name": "start",
+          "description": "Action start timestamp in the original annotation format.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "badminton_csvs"
+            },
+            "extract": {
+              "column": "start"
+            }
+          }
+        },
+        {
+          "@id": "badminton/end",
+          "@type": "cr:Field",
+          "name": "end",
+          "description": "Action end timestamp in the original annotation format.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "badminton_csvs"
+            },
+            "extract": {
+              "column": "end"
+            }
+          }
+        },
+        {
+          "@id": "badminton/position",
+          "@type": "cr:Field",
+          "name": "position",
+          "description": "Acting-player position label.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "badminton_csvs"
+            },
+            "extract": {
+              "column": "position"
+            }
+          }
+        },
+        {
+          "@id": "badminton/first",
+          "@type": "cr:Field",
+          "name": "first",
+          "description": "Auxiliary rally-order flag in the original badminton annotation files.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileSet": {
+              "@id": "badminton_csvs"
+            },
+            "extract": {
+              "column": "first"
+            }
+          }
+        },
+        {
+          "@id": "badminton/score",
+          "@type": "cr:Field",
+          "name": "score",
+          "description": "Binary sequence-level score outcome label.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileSet": {
+              "@id": "badminton_csvs"
+            },
+            "extract": {
+              "column": "score"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@id": "beachvolleyball_annotations",
+      "@type": "cr:RecordSet",
+      "name": "Beach volleyball annotations",
+      "description": "Action-level beach volleyball annotations using timestamp-style temporal fields.",
+      "field": [
+        {
+          "@id": "beachvolleyball/name",
+          "@type": "cr:Field",
+          "name": "name",
+          "description": "Annotated beach volleyball action category.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "beachvolleyball_csvs"
+            },
+            "extract": {
+              "column": "name"
+            }
+          }
+        },
+        {
+          "@id": "beachvolleyball/start",
+          "@type": "cr:Field",
+          "name": "start",
+          "description": "Action start timestamp in the original annotation format.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "beachvolleyball_csvs"
+            },
+            "extract": {
+              "column": "start"
+            }
+          }
+        },
+        {
+          "@id": "beachvolleyball/end",
+          "@type": "cr:Field",
+          "name": "end",
+          "description": "Action end timestamp in the original annotation format.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "beachvolleyball_csvs"
+            },
+            "extract": {
+              "column": "end"
+            }
+          }
+        },
+        {
+          "@id": "beachvolleyball/position",
+          "@type": "cr:Field",
+          "name": "position",
+          "description": "Acting-player position label.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "beachvolleyball_csvs"
+            },
+            "extract": {
+              "column": "position"
+            }
+          }
+        },
+        {
+          "@id": "beachvolleyball/score",
+          "@type": "cr:Field",
+          "name": "score",
+          "description": "Binary sequence-level score outcome label.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileSet": {
+              "@id": "beachvolleyball_csvs"
+            },
+            "extract": {
+              "column": "score"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@id": "tennis_annotations",
+      "@type": "cr:RecordSet",
+      "name": "Tennis annotations",
+      "description": "Action-level tennis doubles annotations using frame-based temporal fields.",
+      "field": [
+        {
+          "@id": "tennis/start_frame",
+          "@type": "cr:Field",
+          "name": "start_frame",
+          "description": "Action start frame index.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileSet": {
+              "@id": "tennis_csvs"
+            },
+            "extract": {
+              "column": "start_frame"
+            }
+          }
+        },
+        {
+          "@id": "tennis/end_frame",
+          "@type": "cr:Field",
+          "name": "end_frame",
+          "description": "Action end frame index.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileSet": {
+              "@id": "tennis_csvs"
+            },
+            "extract": {
+              "column": "end_frame"
+            }
+          }
+        },
+        {
+          "@id": "tennis/action_name",
+          "@type": "cr:Field",
+          "name": "action_name",
+          "description": "Annotated tennis action category.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "tennis_csvs"
+            },
+            "extract": {
+              "column": "action_name"
+            }
+          }
+        },
+        {
+          "@id": "tennis/position",
+          "@type": "cr:Field",
+          "name": "position",
+          "description": "Acting-player position label.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "tennis_csvs"
+            },
+            "extract": {
+              "column": "position"
+            }
+          }
+        },
+        {
+          "@id": "tennis/score",
+          "@type": "cr:Field",
+          "name": "score",
+          "description": "Binary sequence-level score outcome label.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileSet": {
+              "@id": "tennis_csvs"
+            },
+            "extract": {
+              "column": "score"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@id": "table_tennis_annotations",
+      "@type": "cr:RecordSet",
+      "name": "Table tennis annotations",
+      "description": "Action-level table tennis doubles annotations using frame-based temporal fields.",
+      "field": [
+        {
+          "@id": "table_tennis/start_frame",
+          "@type": "cr:Field",
+          "name": "start_frame",
+          "description": "Action start frame index.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileSet": {
+              "@id": "table_tennis_csvs"
+            },
+            "extract": {
+              "column": "start_frame"
+            }
+          }
+        },
+        {
+          "@id": "table_tennis/end_frame",
+          "@type": "cr:Field",
+          "name": "end_frame",
+          "description": "Action end frame index.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileSet": {
+              "@id": "table_tennis_csvs"
+            },
+            "extract": {
+              "column": "end_frame"
+            }
+          }
+        },
+        {
+          "@id": "table_tennis/action_name",
+          "@type": "cr:Field",
+          "name": "action_name",
+          "description": "Annotated table tennis action category.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "table_tennis_csvs"
+            },
+            "extract": {
+              "column": "action_name"
+            }
+          }
+        },
+        {
+          "@id": "table_tennis/position",
+          "@type": "cr:Field",
+          "name": "position",
+          "description": "Acting-player position label.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "table_tennis_csvs"
+            },
+            "extract": {
+              "column": "position"
+            }
+          }
+        },
+        {
+          "@id": "table_tennis/score",
+          "@type": "cr:Field",
+          "name": "score",
+          "description": "Binary sequence-level score outcome label.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileSet": {
+              "@id": "table_tennis_csvs"
+            },
+            "extract": {
+              "column": "score"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "dataCollection": "JAS-2v2 was constructed from professional sports broadcasts and publicly accessible online match footage. Rallies were segmented into temporally ordered action units and annotated with action category, acting-player position, and sequence-level score outcome. The public release focuses on structured annotations, split definitions, and metadata rather than redistribution of raw source videos.",
+  "dataBiases": "The dataset covers four representative 2v2 sports but does not span all tactical settings or camera conditions. Most samples are derived from professional-level broadcasts with relatively consistent viewpoints, which may underrepresent amateur play, alternative viewing angles, and noisier match footage. Action-category frequencies may also vary across sports and classes.",
+  "personalSensitiveInformation": "The dataset is derived from publicly broadcast sports footage and the public release contains annotations and metadata rather than raw source videos. No private personal information is intentionally collected as part of the released benchmark package."
+}

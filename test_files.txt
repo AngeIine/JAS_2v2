@@ -1,0 +1,10 @@
+﻿data/badminton/mm_lw3.csv
+data/badminton/mm_lw4.csv
+data/badminton/mm_lw5.csv
+data/beachvolleyball/10_02.csv
+data/beachvolleyball/11_01.csv
+data/beachvolleyball/11_02.csv
+data/beachvolleyball/12_01.csv
+data/beachvolleyball/12_02.csv
+data/tennis/zh_sk.csv
+data/table_tennis/sw_lj.csv
