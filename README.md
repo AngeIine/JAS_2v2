@@ -183,37 +183,6 @@ Check the available columns before selecting a feature configuration. Timestamp-
 
 The release split lists are available under [`splits/`](splits). Check the split logic of the selected training script when reproducing a particular experiment.
 
-### 5. Run the lightweight training scaffold
-
-Run from the repository root:
-
-```bash
-python code/train_multitask_gcn.py --data-root data --split-mode mixed --feature-tier common
-```
-
-This provides a lightweight entry point for the released annotation pipeline. Its defaults differ from the full paper experiment configuration, and its split is constructed by the script rather than automatically loaded from `splits/`.
-
-Inspect available options with:
-
-```bash
-python code/train_multitask_gcn.py --help
-python code/train_action_to_score.py --help
-```
-
-The joint action-to-score implementation expects suitable processed physical-feature CSVs. For video-based feature extraction, see [`code/extract_action_features.py`](code/extract_action_features.py).
-
-## Paper-Reported Results
-
-Selected results on the unified four-sport benchmark, in percent:
-
-| Method | Action Accuracy | Action F1 | Score Accuracy | Score F1 |
-|---|---:|---:|---:|---:|
-| Graphormer | 72.64 | 71.02 | 85.20 | 83.61 |
-| Mamba | 73.35 | 71.90 | 86.42 | 84.85 |
-| **Ours** | **74.28** | **72.91** | **87.45** | **86.13** |
-
-These values are reported in the paper under its full-feature evaluation setting. The paper additionally includes feature and module ablations, temporal permutation tests, partial-rally evaluation, and leave-one-sport-out experiments.
-
 ## Citation
 
 If you use JAS-2v2 in your research, please cite:
