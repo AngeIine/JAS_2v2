@@ -8,7 +8,7 @@
 
 Yuting Wang · Peng Wen · Fengshun Wang · Jiayong Zuo · Xinyu Peng · Qiurui Wang
 
-[Dataset](https://drive.google.com/drive/folders/1o991foYFWqHUBbjFVtOQV_VapdC6MZQy) · [Annotations](data) · [Paper / Poster](https://neurips.cc/virtual/2026/loc/atlanta/poster/138978) · [Getting Started](#getting-started) · [Citation](#citation)
+[Dataset](https://drive.google.com/drive/folders/1o991foYFWqHUBbjFVtOQV_VapdC6MZQy) · [Annotations](data) · [Paper / Poster](https://neurips.cc/virtual/2026/loc/atlanta/poster/138978) · [Citation](#citation)
 
 </div>
 
@@ -152,8 +152,6 @@ cd JAS_2v2
 ```bash
 python -m pip install -r requirements.txt
 ```
-
-For CUDA acceleration, install a PyTorch build compatible with your hardware.
 
 ### 3. Download the videos and annotations
 
