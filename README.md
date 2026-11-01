@@ -22,16 +22,6 @@ The benchmark focuses on the development of individual rallies: the actions perf
   <img src="assets/figures/dataset_overview.png" alt="JAS-2v2 dataset overview across four sports" width="900">
 </p>
 
-*Dataset overview from the paper.*
-
-### At a glance
-
-| Sports | Matches | Rally sequences | Action instances | Action classes |
-|:---:|:---:|:---:|:---:|:---:|
-| 4 | 47 | 4,973 | 35,308 | 41 |
-
-These statistics describe the dataset reported in the paper.
-
 ## Dataset Download
 
 **Videos and their corresponding CSV annotations are available on Google Drive:**
@@ -51,8 +41,6 @@ JAS_2v2/
 Keep the videos and their corresponding CSV annotations together when preparing the data.
 
 This GitHub repository provides annotation CSVs, split lists, metadata, and reference code. Videos and their corresponding annotations are hosted separately on Google Drive.
-
-> The beach volleyball directory is named `beach_volleyball/` on Google Drive and `beachvolleyball/` in this repository. Account for this difference when configuring local paths.
 
 ## From Actions to Outcomes
 
