@@ -8,7 +8,7 @@
 
 Yuting Wang · Peng Wen · Fengshun Wang · Jiayong Zuo · Xinyu Peng · Qiurui Wang
 
-[Dataset](https://drive.google.com/drive/folders/1o991foYFWqHUBbjFVtOQV_VapdC6MZQy) · [Annotations](data) · [Splits](splits) · [Getting Started](#getting-started) · [Citation](#citation)
+[Dataset](https://drive.google.com/drive/folders/1o991foYFWqHUBbjFVtOQV_VapdC6MZQy) · [Annotations](data) · [Paper / Poster](https://neurips.cc/virtual/2026/loc/atlanta/poster/138978) · [Getting Started](#getting-started) · [Citation](#citation)
 
 </div>
 
