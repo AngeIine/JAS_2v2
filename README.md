@@ -172,14 +172,6 @@ Selected results on the unified four-sport benchmark, in percent:
 
 These values are reported in the paper's Table 5 under its full-feature evaluation setting. The paper also includes feature/module ablations, temporal permutation tests, partial-rally evaluation, and leave-one-sport-out experiments.
 
-### Feature analysis
-
-<p align="center">
-  <img src="assets/figures/feature_analysis.png" alt="Physical-feature correlations, XGBoost feature importance, and cumulative feature importance" width="1000">
-</p>
-
-*Figure 4 from the paper: feature correlations, XGBoost-based importance scores, and cumulative importance. Feature importance describes the fitted estimator and should be interpreted within that analysis.*
-
 ## Citation
 
 If you use JAS-2v2 in your research, please cite:
