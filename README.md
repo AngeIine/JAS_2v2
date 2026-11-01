@@ -8,7 +8,7 @@
 
 Yuting Wang · Peng Wen · Fengshun Wang · Jiayong Zuo · Xinyu Peng · Qiurui Wang
 
-[Dataset](data) · [Code](code) · [Splits](splits) · [Getting Started](#getting-started) · [Citation](#citation)
+[Dataset](data) · [Getting Started](#getting-started) · [Citation](#citation)
 
 </div>
 
@@ -30,7 +30,7 @@ The benchmark shifts attention from aggregate match statistics to the developmen
 |:---:|:---:|:---:|:---:|:---:|
 | 4 | 47 | 4,973 | 35,308 | 41 |
 
-These statistics describe the dataset reported in the paper. The current repository provides annotation CSVs, split lists, metadata, and reference code. Source broadcast videos are not included in this release.
+These statistics describe the dataset reported in the paper. The current repository provides annotation CSVs, split lists, metadata, and reference code. 
 
 ## From Actions to Outcomes
 
