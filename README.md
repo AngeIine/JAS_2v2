@@ -8,21 +8,21 @@
 
 Yuting Wang · Peng Wen · Fengshun Wang · Jiayong Zuo · Xinyu Peng · Qiurui Wang
 
-[Dataset](data) · [Getting Started](#getting-started) · [Citation](#citation)
+[Dataset](https://drive.google.com/drive/folders/1o991foYFWqHUBbjFVtOQV_VapdC6MZQy) · [Annotations](data) · [Splits](splits) · [Getting Started](#getting-started) · [Citation](#citation)
 
 </div>
 
 ## Overview
 
-**JAS-2v2** is a multi-sport dataset and benchmark for **joint action prediction and score outcome prediction**. It brings together **beach volleyball, badminton doubles, tennis doubles, and table tennis doubles** in a shared action-sequence modeling framework.
+**JAS-2v2** is a multi-sport dataset and benchmark for **joint action prediction and score outcome prediction**. It brings together **beach volleyball, badminton doubles, tennis doubles, and table tennis doubles** within a shared action-sequence modeling framework.
 
-The benchmark shifts attention from aggregate match statistics to the development of individual rallies: the actions performed, their temporal organization, and their relationship to the final rally outcome. It supports research on action-level representations, structured relational modeling, and multi-sport sports analysis.
+The benchmark focuses on the development of individual rallies: the actions performed, their temporal organization, and their predictive relationships with the final rally outcome. It supports research on action-level representations, structured relational modeling, and multi-sport sports analysis.
 
 <p align="center">
-  <img src="assets/figures/dataset_overview.png" alt="JAS-2v2 overview showing four sports and their action taxonomies" width="900">
+  <img src="assets/figures/dataset_overview.png" alt="JAS-2v2 dataset overview across four sports" width="900">
 </p>
 
-*Figure 2 from the paper: the four sports and their action taxonomies under the JAS-2v2 framework.*
+*Dataset overview from the paper.*
 
 ### At a glance
 
@@ -30,24 +30,48 @@ The benchmark shifts attention from aggregate match statistics to the developmen
 |:---:|:---:|:---:|:---:|:---:|
 | 4 | 47 | 4,973 | 35,308 | 41 |
 
-These statistics describe the dataset reported in the paper. The current repository provides annotation CSVs, split lists, metadata, and reference code. 
+These statistics describe the dataset reported in the paper.
+
+## Dataset Download
+
+**Videos and their corresponding CSV annotations are available on Google Drive:**
+
+### [Download JAS-2v2 — Google Drive](https://drive.google.com/drive/folders/1o991foYFWqHUBbjFVtOQV_VapdC6MZQy)
+
+The Google Drive folder contains four sport-specific directories:
+
+```text
+JAS_2v2/
+├── badminton/
+├── beach_volleyball/
+├── table_tennis/
+└── tennis/
+```
+
+Keep the videos and their corresponding CSV annotations together when preparing the data.
+
+This GitHub repository provides annotation CSVs, split lists, metadata, and reference code. Videos and their corresponding annotations are hosted separately on Google Drive.
+
+> The beach volleyball directory is named `beach_volleyball/` on Google Drive and `beachvolleyball/` in this repository. Account for this difference when configuring local paths.
 
 ## From Actions to Outcomes
 
-JAS-2v2 uses a complete rally, from serve to point completion, as the sequence-level unit. Action annotations connect physical motion, action semantics, player positions, and rally outcomes.
+JAS-2v2 uses a complete rally, from serve to point completion, as the sequence-level unit. Action annotations connect physical motion, action semantics, acting-player positions, and rally outcomes.
 
 <p align="center">
   <img src="assets/figures/action_to_score.png" alt="Comparison of match-level statistical analysis and action-level sequence modeling" width="1000">
 </p>
 
-*Figure 1 from the paper: moving from match-level statistics to action-level sequence modeling.*
+*From aggregate match statistics to action-level sequence modeling.*
 
 The benchmark includes two tasks:
 
-1. **Action category prediction:** predict an action category using the preceding action context.
-2. **Score outcome prediction:** classify whether the serving team wins or loses the rally. The complete-rally setting is retrospective outcome classification; the paper also evaluates partially observed rallies.
+1. **Action category prediction:** predict the current action category using preceding action context.
+2. **Score outcome prediction:** classify whether the serving team wins or loses the rally.
 
-Beach volleyball includes multi-contact teammate exchanges. The three racket sports involve direct exchanges across opposing sides. The dataset preserves these sport-specific action definitions while providing a common sequence-modeling setting.
+The complete-rally score setting is retrospective outcome classification. The paper also evaluates score prediction from partially observed rallies.
+
+Beach volleyball includes multi-contact teammate exchanges, while the three racket sports involve direct exchanges across opposing sides. JAS-2v2 preserves sport-specific action definitions within a common sequence-modeling setting.
 
 ## Dataset Statistics
 
@@ -61,7 +85,14 @@ The paper reports the following match-level train/test allocation:
 | Table tennis doubles | 9 / 3 | 870 / 290 | 2,896 / 965 | 12 |
 | **Total** | **35 / 12** | **3,715 / 1,258** | **26,129 / 9,179** | **41** |
 
-Annotations include action boundaries, action categories, acting-player court positions, and binary rally outcomes. Sport-specific class definitions and annotation guidelines are described in the paper.
+Annotations include:
+
+- **Action boundaries:** temporal start and end of each action.
+- **Action categories:** sport-specific technical action labels.
+- **Acting-player positions:** court-position identifiers for the player executing an action.
+- **Rally outcomes:** binary win/loss labels for the serving team.
+
+Sport-specific action taxonomies and annotation guidelines are described in the paper.
 
 ## Reference Framework
 
@@ -69,15 +100,15 @@ The paper introduces a joint action-to-score framework with three modules:
 
 - **Action Relation Learning (ARL):** learns predictive relations among action steps from their physical features.
 - **Graph Construction:** combines physical descriptors and semantic cues in an action-graph representation.
-- **Joint Prediction:** predicts action categories and uses the inferred action representation for sequence-level outcome prediction.
+- **Joint Prediction:** predicts action categories and uses inferred action representations for sequence-level outcome prediction.
 
 <p align="center">
-  <img src="assets/figures/framework.png" alt="JAS-2v2 framework with action relation learning, graph construction, and joint prediction" width="1100">
+  <img src="assets/figures/framework.png" alt="Action relation learning, graph construction, and joint prediction framework" width="1100">
 </p>
 
-*Figure 3 from the paper: the unified action-to-score framework. Learned relations are interpreted as predictive dependencies.*
+*The unified action-to-score framework. Learned graph relations are interpreted as predictive dependencies.*
 
-The four physical descriptors used in the paper are:
+### Physical descriptors
 
 | Descriptor | Meaning |
 |---|---|
@@ -86,7 +117,9 @@ The four physical descriptors used in the paper are:
 | **TD — Target Distance** | Distance between the estimated ball landing point and the position of the subsequent action executor |
 | **PD — Player Distance** | Start-to-end displacement of the acting player within an action segment |
 
-TD uses information about the subsequent action executor. Its availability must therefore be considered explicitly when evaluating online or partial-observation prediction. Reconstructing the physical descriptors requires aligned source footage or processed feature files.
+Reconstructing these descriptors requires aligned videos and annotations, together with ball detection and player pose estimation.
+
+TD uses information about the subsequent action executor. Its availability must be considered explicitly when evaluating online or partial-observation prediction.
 
 ## Repository Structure
 
@@ -97,13 +130,16 @@ TD uses information about the subsequent action executor. Its availability must 
 ├── metadata.json
 ├── requirements.txt
 ├── assets/
-│   └── figures/                    # Figures extracted from the paper
+│   └── figures/
+│       ├── dataset_overview.png
+│       ├── action_to_score.png
+│       └── framework.png
 ├── code/
-│   ├── dataset.py                  # CSV loading and sequence construction
-│   ├── models.py                   # Lightweight graph-model components
-│   ├── train_multitask_gcn.py       # Lightweight multi-task training entry point
-│   ├── train_action_to_score.py     # Joint action-to-score reference implementation
-│   └── extract_action_features.py  # Features from aligned footage and annotations
+│   ├── dataset.py
+│   ├── models.py
+│   ├── train_multitask_gcn.py
+│   ├── train_action_to_score.py
+│   └── extract_action_features.py
 ├── data/
 │   ├── badminton/
 │   ├── beachvolleyball/
@@ -116,32 +152,50 @@ TD uses information about the subsequent action executor. Its availability must 
 
 ## Getting Started
 
-### 1. Download and install dependencies
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/AngeIine/JAS_2v2.git
 cd JAS_2v2
+```
+
+### 2. Install dependencies
+
+```bash
 python -m pip install -r requirements.txt
 ```
 
-Install a PyTorch build appropriate for your hardware when using CUDA.
+For CUDA acceleration, install a PyTorch build compatible with your hardware.
 
-### 2. Explore the annotations
+### 3. Download the videos and annotations
 
-CSV files are organized by sport under [`data/`](data). The release retains sport-specific column conventions:
+Download the required sport folders from
+[Google Drive](https://drive.google.com/drive/folders/1o991foYFWqHUBbjFVtOQV_VapdC6MZQy).
+
+Retain the correspondence between videos and CSV annotations, and configure local paths for the selected preprocessing or training script.
+
+### 4. Explore the annotation format
+
+CSV annotations are also provided under [`data/`](data). The release retains sport-specific column conventions:
 
 | Content | Field names |
 |---|---|
 | Action category | `action_name` or `name` |
 | Acting-player position | `position` |
-| Binary outcome | `score` |
+| Binary rally outcome | `score` |
 | Action boundaries | `start_frame` / `end_frame`, or timestamp-style `start` / `end` |
 
-Processed feature files may also contain `target_distance`, `pdistance`, `pspeed`, and `bspeed`. Check the available columns before selecting a feature configuration. Timestamp-based annotations need frame alignment when reconstructing video-derived features.
+Processed feature files may additionally contain:
 
-The release split lists are in [`splits/`](splits). Match-level splitting is used in the paper. Check the split logic of the selected training script when reproducing a particular experiment.
+```text
+target_distance, pdistance, pspeed, bspeed
+```
 
-### 3. Run the lightweight training scaffold
+Check the available columns before selecting a feature configuration. Timestamp-based annotations require frame alignment when reconstructing video-derived features.
+
+The release split lists are available under [`splits/`](splits). Check the split logic of the selected training script when reproducing a particular experiment.
+
+### 5. Run the lightweight training scaffold
 
 Run from the repository root:
 
@@ -149,16 +203,16 @@ Run from the repository root:
 python code/train_multitask_gcn.py --data-root data --split-mode mixed --feature-tier common
 ```
 
-This is a lightweight entry point for the released annotation pipeline. Its defaults are separate from the full paper experiment configuration, and its split is constructed by the script rather than read automatically from `splits/`.
+This provides a lightweight entry point for the released annotation pipeline. Its defaults differ from the full paper experiment configuration, and its split is constructed by the script rather than automatically loaded from `splits/`.
 
-Inspect available settings with:
+Inspect available options with:
 
 ```bash
 python code/train_multitask_gcn.py --help
 python code/train_action_to_score.py --help
 ```
 
-The joint action-to-score implementation expects suitable processed physical-feature CSVs. For feature extraction, see [`code/extract_action_features.py`](code/extract_action_features.py); aligned source videos and appropriate detection/pose models are required.
+The joint action-to-score implementation expects suitable processed physical-feature CSVs. For video-based feature extraction, see [`code/extract_action_features.py`](code/extract_action_features.py).
 
 ## Paper-Reported Results
 
@@ -170,7 +224,7 @@ Selected results on the unified four-sport benchmark, in percent:
 | Mamba | 73.35 | 71.90 | 86.42 | 84.85 |
 | **Ours** | **74.28** | **72.91** | **87.45** | **86.13** |
 
-These values are reported in the paper's Table 5 under its full-feature evaluation setting. The paper also includes feature/module ablations, temporal permutation tests, partial-rally evaluation, and leave-one-sport-out experiments.
+These values are reported in the paper under its full-feature evaluation setting. The paper additionally includes feature and module ablations, temporal permutation tests, partial-rally evaluation, and leave-one-sport-out experiments.
 
 ## Citation
 
@@ -187,7 +241,9 @@ If you use JAS-2v2 in your research, please cite:
 
 ## Usage Terms
 
-Please read [`LICENSE.txt`](LICENSE.txt) for the release notice and usage terms. The annotation package is intended for non-commercial research and evaluation under the existing notice. Original broadcast footage remains subject to its owners' rights and applicable platform terms.
+Please read [`LICENSE.txt`](LICENSE.txt) for the annotation release notice and usage terms.
+
+Original broadcast footage remains subject to its owners' rights and applicable platform terms. Access through the Google Drive folder does not change those underlying rights.
 
 ## Contact
 
